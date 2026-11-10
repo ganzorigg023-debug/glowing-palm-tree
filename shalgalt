@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Миний сайт</title>
+<style>
+body{
+font-family:Arial;
+text-align:center;
+padding:50px;
+background:#f4f6ff;
+}
+button{
+padding:10px 20px;
+background:blue;
+color:white;
+border:none;
+border-radius:10px;
+}
+</style>
+</head>
+<body>
+
+<h1>Сайн байна уу?</h1>
+
+<p>Миний анхны сайт</p>
+
+<button onclick="hello()">
+Дар
+</button>
+
+<script>
+function hello(){
+alert("Амжилттай ажиллаж байна!");
+}
+</script>
+
+</body>
+</html>
