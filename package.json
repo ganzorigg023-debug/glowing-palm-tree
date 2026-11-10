@@ -1,33 +1,178 @@
-{
-  "name": "quiz-system",
-  "version": "1.0.0",
-  "description": "Quiz System",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js"
-  },
-  "dependencies": {
-    "express": "^4.21.2"
-  }
-}const express = require("express");
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-const app = express();
+<title>Хувь хүн ба эдийн засаг</title>
 
-app.get("/", (req, res) => {
+<style>
+body{
+font-family:Arial;
+background:#f4f6ff;
+padding:20px;
+}
 
-    res.send(`
-    <h1>ХУВЬ ХҮН БА ЭДИЙН ЗАСАГ</h1>
-    <p>Сайт амжилттай ажиллаж байна ✅</p>
-    `);
+.container{
+background:white;
+max-width:700px;
+margin:auto;
+padding:20px;
+border-radius:15px;
+box-shadow:0 0 10px #ccc;
+}
 
-});
+h1{
+text-align:center;
+color:#2563eb;
+}
 
-const PORT = process.env.PORT || 3000;
+input{
+padding:10px;
+margin:5px 0;
+width:100%;
+box-sizing:border-box;
+}
 
-app.listen(PORT, () => {
-    console.log("Server started");
-});glowing-palm-tree
+button{
+width:100%;
+padding:12px;
+background:#2563eb;
+color:white;
+border:none;
+border-radius:10px;
+font-size:16px;
+}
 
-├── index.html
-├── package.json
-└── server.js
+.question{
+margin-top:20px;
+padding:15px;
+border:1px solid #ddd;
+border-radius:10px;
+}
+
+#quiz{
+display:none;
+}
+
+#result{
+margin-top:20px;
+font-size:24px;
+font-weight:bold;
+text-align:center;
+color:green;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>ХУВЬ ХҮН БА ЭДИЙН ЗАСАГ</h1>
+
+<div id="login">
+
+<h3>Нэвтрэх</h3>
+
+<input
+id="username"
+placeholder="Нэвтрэх нэр">
+
+<input
+id="password"
+type="password"
+placeholder="Нууц код">
+
+<button onclick="login()">
+Нэвтрэх
+</button>
+
+</div>
+
+<div id="quiz">
+
+<h3>1. Эдийн засаг гэж юу вэ?</h3>
+
+<label>
+<input type="radio" name="q1" value="correct">
+Хязгааргүй хэрэгцээг хязгаарлагдмал нөөцөөр хангахыг судална
+</label>
+
+<br><br>
+
+<label>
+<input type="radio" name="q1" value="wrong">
+Хүний биеийг судална
+</label>
+
+<br><br>
+
+<button onclick="finishQuiz()">
+Шалгалт дуусгах
+</button>
+
+<div id="result"></div>
+
+</div>
+
+</div>
+
+<script>
+
+const USERNAME="student43";
+const PASSWORD="4589";
+
+function login(){
+
+const user=
+document.getElementById("username").value;
+
+const pass=
+document.getElementById("password").value;
+
+if(
+user===USERNAME &&
+pass===PASSWORD
+){
+
+document.getElementById("login")
+.style.display="none";
+
+document.getElementById("quiz")
+.style.display="block";
+
+}
+else{
+
+alert("Нэвтрэх мэдээлэл буруу байна");
+
+}
+
+}
+
+function finishQuiz(){
+
+let score=0;
+
+const q1=
+document.querySelector(
+'input[name="q1"]:checked'
+);
+
+if(
+q1 &&
+q1.value==="correct"
+){
+score++;
+}
+
+document.getElementById("result")
+.innerHTML=
+"Таны оноо: "+score;
+}
+
+</script>
+
+</body>
+</html>
