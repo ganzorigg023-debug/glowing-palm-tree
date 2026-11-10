@@ -1,0 +1,33 @@
+{
+  "name": "quiz-system",
+  "version": "1.0.0",
+  "description": "Quiz System",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}const express = require("express");
+
+const app = express();
+
+app.get("/", (req, res) => {
+
+    res.send(`
+    <h1>ХУВЬ ХҮН БА ЭДИЙН ЗАСАГ</h1>
+    <p>Сайт амжилттай ажиллаж байна ✅</p>
+    `);
+
+});
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+    console.log("Server started");
+});glowing-palm-tree
+
+├── index.html
+├── package.json
+└── server.js
