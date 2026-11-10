@@ -3,13 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Хувь хүн ба эдийн засаг</title>
+
 <style>
 body{
     font-family:Arial,sans-serif;
     background:#f4f6ff;
     padding:20px;
 }
+
 .container{
     background:white;
     max-width:700px;
@@ -18,16 +21,19 @@ body{
     border-radius:15px;
     box-shadow:0 0 10px #ccc;
 }
+
 h1{
     text-align:center;
     color:#2563eb;
 }
+
 input{
     width:100%;
     padding:10px;
     margin:5px 0;
     box-sizing:border-box;
 }
+
 button{
     width:100%;
     padding:12px;
@@ -37,11 +43,112 @@ button{
     border-radius:10px;
     cursor:pointer;
 }
+
 #quiz{
     display:none;
 }
+
 #result{
     margin-top:20px;
     font-size:22px;
     font-weight:bold;
-    color
+    color:green;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>ХУВЬ ХҮН БА ЭДИЙН ЗАСАГ</h1>
+
+<div id="login">
+
+<h3>Нэвтрэх</h3>
+
+<input id="username" placeholder="Нэвтрэх нэр">
+
+<input id="password" type="password" placeholder="Нууц код">
+
+<button onclick="login()">
+Нэвтрэх
+</button>
+
+</div>
+
+<div id="quiz">
+
+<h3>1. Эдийн засаг гэж юу вэ?</h3>
+
+<label>
+<input type="radio" name="q1" value="correct">
+Хязгааргүй хэрэгцээг хязгаарлагдмал нөөцөөр хангахыг судалдаг шинжлэх ухаан
+</label>
+
+<br><br>
+
+<label>
+<input type="radio" name="q1" value="wrong">
+Хүний биеийг судалдаг шинжлэх ухаан
+</label>
+
+<br><br>
+
+<button onclick="finishQuiz()">
+Шалгалт дуусгах
+</button>
+
+<div id="result"></div>
+
+</div>
+
+</div>
+
+<script>
+
+const USERNAME = "student43";
+const PASSWORD = "4589";
+
+function login(){
+
+    const user =
+    document.getElementById("username").value;
+
+    const pass =
+    document.getElementById("password").value;
+
+    if(user === USERNAME && pass === PASSWORD){
+
+        document.getElementById("login").style.display = "none";
+
+        document.getElementById("quiz").style.display = "block";
+
+    }else{
+
+        alert("Нэвтрэх мэдээлэл буруу байна!");
+
+    }
+}
+
+function finishQuiz(){
+
+    let score = 0;
+
+    const q1 =
+    document.querySelector(
+        'input[name="q1"]:checked'
+    );
+
+    if(q1 && q1.value === "correct"){
+        score++;
+    }
+
+    document.getElementById("result").innerHTML =
+    "Таны оноо: " + score + "/1";
+}
+
+</script>
+
+</body>
+</html>
