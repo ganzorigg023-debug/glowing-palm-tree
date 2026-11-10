@@ -3,71 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Хувь хүн ба эдийн засаг</title>
-
-<style>
-body{
-font-family:Arial;
-background:#f4f6ff;
-padding:20px;
-}
-
-.container{
-background:white;
-max-width:700px;
-margin:auto;
-padding:20px;
-border-radius:15px;
-box-shadow:0 0 10px #ccc;
-}
-
-h1{
-text-align:center;
-color:#2563eb;
-}
-
-input{
-padding:10px;
-margin:5px 0;
-width:100%;
-box-sizing:border-box;
-}
-
-button{
-width:100%;
-padding:12px;
-background:#2563eb;
-color:white;
-border:none;
-border-radius:10px;
-font-size:16px;
-}
-
-.question{
-margin-top:20px;
-padding:15px;
-border:1px solid #ddd;
-border-radius:10px;
-}
-
-#quiz{
-display:none;
-}
-
-#result{
-margin-top:20px;
-font-size:24px;
-font-weight:bold;
-text-align:center;
-color:green;
-}
-</style>
 </head>
-
 <body>
-
-<div class="container">
 
 <h1>ХУВЬ ХҮН БА ЭДИЙН ЗАСАГ</h1>
 
@@ -75,14 +13,9 @@ color:green;
 
 <h3>Нэвтрэх</h3>
 
-<input
-id="username"
-placeholder="Нэвтрэх нэр">
+<input id="username" placeholder="Нэвтрэх нэр">
 
-<input
-id="password"
-type="password"
-placeholder="Нууц код">
+<input id="password" type="password" placeholder="Нууц код">
 
 <button onclick="login()">
 Нэвтрэх
@@ -90,7 +23,7 @@ placeholder="Нууц код">
 
 </div>
 
-<div id="quiz">
+<div id="quiz" style="display:none;">
 
 <h3>1. Эдийн засаг гэж юу вэ?</h3>
 
@@ -116,34 +49,28 @@ placeholder="Нууц код">
 
 </div>
 
-</div>
-
 <script>
 
-const USERNAME="student43";
-const PASSWORD="4589";
+const USERNAME = "student43";
+const PASSWORD = "4589";
 
 function login(){
 
-const user=
+const user =
 document.getElementById("username").value;
 
-const pass=
+const pass =
 document.getElementById("password").value;
 
 if(
-user===USERNAME &&
-pass===PASSWORD
+user === USERNAME &&
+pass === PASSWORD
 ){
 
-document.getElementById("login")
-.style.display="none";
+document.getElementById("login").style.display="none";
+document.getElementById("quiz").style.display="block";
 
-document.getElementById("quiz")
-.style.display="block";
-
-}
-else{
+}else{
 
 alert("Нэвтрэх мэдээлэл буруу байна");
 
@@ -153,23 +80,20 @@ alert("Нэвтрэх мэдээлэл буруу байна");
 
 function finishQuiz(){
 
-let score=0;
+let score = 0;
 
-const q1=
+const q1 =
 document.querySelector(
 'input[name="q1"]:checked'
 );
 
-if(
-q1 &&
-q1.value==="correct"
-){
+if(q1 && q1.value==="correct"){
 score++;
 }
 
-document.getElementById("result")
-.innerHTML=
-"Таны оноо: "+score;
+document.getElementById("result").innerHTML =
+"Таны оноо: " + score;
+
 }
 
 </script>
